@@ -3,6 +3,7 @@ package org.example.bank.dao.account;
 import org.example.bank.dao.user.UserRepository;
 import org.example.bank.entities.Account;
 import org.example.bank.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,17 +14,26 @@ import java.util.Map;
 public class AccountRepository implements IAccountRepository{
 
         private static Map<Integer,Account> accountRepository;
+
+        private UserRepository userRepository;
         private int IDCounterOfAccount;
 
-        public AccountRepository(){
+        @Autowired
+        public AccountRepository(UserRepository userRepository){
+                this.userRepository = userRepository;
                 accountRepository = new HashMap<>();
                 IDCounterOfAccount = 0;
         }
         @Override
         public void createAccount(int id) {
                 IDCounterOfAccount++;
-                Account account = new Account(IDCounterOfAccount,0);
-                accountRepository.put(IDCounterOfAccount,new Account(id,0));
+                System.out.println("айди аккаунта" + IDCounterOfAccount);
+                Account account = new Account( IDCounterOfAccount ,id,0);
+                System.out.println("аккаунт с айди" +
+                        IDCounterOfAccount + "и айди пользователя"
+                + id + "создан");
+                userRepository.zamena(account,id);
+                accountRepository.put(IDCounterOfAccount,account);
 
 
         }
