@@ -1,14 +1,14 @@
-package org.example.bank.services.User;
+package org.example.bank.dao.user;
 
 import org.example.bank.entities.User;
 
 import java.util.Map;
 
-public interface IUserService {
+public interface IUserRepositoy {
 
      Map<Integer, User> getAllUsers();
 
      User getUserById(int userId);
 
-    void createUser(String user_name);
+     void createUser(String user_name);
 }

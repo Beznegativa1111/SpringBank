@@ -1,49 +1,76 @@
 package org.example.bank;
 
 
-import org.example.bank.Scanners.ScannerLines;
+import org.example.bank.operations.commands.AccountCommands;
+import org.example.bank.operations.commands.UserCommands;
+import org.example.bank.operations.processors.account.CreateAccountForUser;
+import org.example.bank.operations.processors.account.GetAllUserAccountsByIid;
+import org.example.bank.operations.processors.account.ShowAllUserAccounts;
+import org.example.bank.operations.processors.user.CreateUser;
+import org.example.bank.operations.processors.user.GetUserById;
+import org.example.bank.operations.processors.user.ShowAllUsers;
 import org.example.bank.services.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Scanner;
 
-
-
-import static org.example.bank.Commands.*;
 
 @Component
 public class OperationsListener {
-    private ScannerLines scanner;
-    private UserService userService;
+
+    private final UserService userService;
+    private CreateUser createUser;
+    private GetUserById getUserById;
+    private ShowAllUsers showAllUsers;
+    private Scanner scanner;
+    private CreateAccountForUser createAccountForUser;
+    private GetAllUserAccountsByIid getAllUserAccountsByIid;
+    private ShowAllUserAccounts showAllUserAccounts;
+
 
     @Autowired
-    public OperationsListener(UserService userService, ScannerLines scanner){
-        this.scanner = scanner;
+    public OperationsListener(UserService userService,CreateUser createUser
+    ,GetUserById getUserById ,ShowAllUsers showAllUsers
+    ,CreateAccountForUser createAccountForUser,GetAllUserAccountsByIid getAllUserAccountsByIid
+    , ShowAllUserAccounts showAllUserAccounts){
         this.userService = userService;
+        this.getUserById = getUserById;
+        this.showAllUsers = showAllUsers;
+        this.createUser = createUser;
+        this.createAccountForUser = createAccountForUser;
+        this.getAllUserAccountsByIid = getAllUserAccountsByIid;
+        this.showAllUserAccounts = showAllUserAccounts;
+        scanner = new Scanner(System.in);
+        sendOperationsForUser();
     }
 
     public void sendOperationsForUser(){
-        while(true){
-            String user = null;
-            System.out.println("Enter command: ");
-            String command = scanner.getScanner();
+        while (true) {
+            System.out.println("Enter desired command");
+            String command = scanner.nextLine();
 
-            if(command.equals(USER_CREATE.name())){
-                System.out.println("Enter desired name");
-                user  = scanner.getScanner();
-                userService.createUser(user);
+            if(command.equals(UserCommands.USER_CREATE.name())){
+                createUser.proccesOperationForUser();
             }
-            else if(command.equals(SHOW_ALL_USERS.name())){
-                    System.out.println("All Users: ");
-                    System.out.println(userService.getAllUsers());
-
-                }
-            else if(command.equals(GET_BY_ID.name())) {
-                System.out.println("Enter id");
-                user = scanner.getScanner();
-                System.out.println(userService.getUserById(Integer.parseInt(user)));
+            else if(command.equals(UserCommands.SHOW_ALL_USERS.name())){
+                showAllUsers.proccesOperationForUser();
+            }
+            else if(command.equals(UserCommands.GET_USER_BY_ID.name())){
+                getUserById.proccesOperationForUser();
+            }
+            else if(command.equals(AccountCommands.ACCOUNT_CREATE.name())){
+                createAccountForUser.processOperationForAccount();
+            }
+            else if(command.equals(AccountCommands.SHOW_ACCOUNTS_BY_USERID.name())){
+                getAllUserAccountsByIid.processOperationForAccount();
+            }
+            else if(command.equals(AccountCommands.SHOW_ALL_ACCOUNTS.name())){
+                showAllUserAccounts.processOperationForAccount();
             }
         }
+
+
     }
 
 }

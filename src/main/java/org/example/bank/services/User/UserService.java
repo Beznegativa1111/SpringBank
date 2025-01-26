@@ -1,13 +1,10 @@
 package org.example.bank.services.User;
 
-import org.example.bank.Entities.User;
-import org.example.bank.Repositories.Users.IUserRepositoy;
-import org.example.bank.Repositories.Users.UserRepository;
+import org.example.bank.entities.User;
+import org.example.bank.dao.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 
 @Service

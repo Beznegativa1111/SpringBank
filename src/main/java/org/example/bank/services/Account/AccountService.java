@@ -1,13 +1,34 @@
 package org.example.bank.services.Account;
 
-import org.example.bank.Entities.Account;
-import org.example.bank.Entities.User;
+import org.example.bank.dao.account.AccountRepository;
+import org.example.bank.entities.Account;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class AccountService {
+import java.util.Map;
+@Component
 
-    public void createAccount(User user){
+public class AccountService implements IAccountService {
+    private AccountRepository accountRepository;
 
+    @Autowired
+    public AccountService(AccountRepository accountRepository){
+        this.accountRepository = accountRepository;
     }
-    public void findAccountById(int id){
+
+
+    @Override
+    public void createAccount(int id) {
+        accountRepository.createAccount(id);
+    }
+
+    @Override
+    public Map<Integer, Account> showAllUserAccounts(int id) {
+        return accountRepository.showAllUserAccounts(id);
+    }
+
+    @Override
+    public Account showAccountsByUserId(int id) {
+        return accountRepository.showAccountsByUserId(id);
     }
 }
