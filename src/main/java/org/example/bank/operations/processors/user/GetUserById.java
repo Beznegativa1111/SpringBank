@@ -10,12 +10,13 @@ public class GetUserById implements CommonProccessOperationForUsers {
 
     private UserService userService;
     private Scanner scanner;
+
     @Autowired
     public GetUserById( UserService userService) {
         this.scanner = new Scanner(System.in);
-
         this.userService = userService;
     }
+
 
     @Override
     public void proccesOperationForUser() {

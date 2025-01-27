@@ -25,7 +25,7 @@ public class GetAllUserAccountsByIid  implements CommonProcessOperationsForAccou
         System.out.println("Enter id of account which you want to see");
         int id = scanner.nextInt();
         System.out.println("All Account this user: " +
-                accountService.showAccountsByUserId(id));
+                accountService.showAllUserAccounts(id));
 
 
     }

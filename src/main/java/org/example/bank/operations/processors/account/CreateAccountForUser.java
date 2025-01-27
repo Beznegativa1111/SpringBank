@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class CreateAccountForUser implements CommonProcessOperationsForAccounts {
     private AccountService accountService;
     private Scanner scanner;
+
     @Autowired
     public CreateAccountForUser(AccountService accountService){
         this.accountService =  accountService;

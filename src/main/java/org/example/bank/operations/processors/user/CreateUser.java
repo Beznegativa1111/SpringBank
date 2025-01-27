@@ -10,13 +10,14 @@ import java.util.Scanner;
 public class CreateUser implements CommonProccessOperationForUsers {
 
     private UserService userService;
-
     private Scanner scanner;
+
     @Autowired
     public CreateUser( UserService userService) {
         this.scanner = new Scanner(System.in);
         this.userService = userService;
     }
+
 
     @Override
     public  void proccesOperationForUser() {

@@ -18,7 +18,6 @@ import java.util.Scanner;
 
 @Component
 public class OperationsListener {
-
     private final UserService userService;
     private CreateUser createUser;
     private GetUserById getUserById;
@@ -44,6 +43,7 @@ public class OperationsListener {
         scanner = new Scanner(System.in);
         sendOperationsForUser();
     }
+
 
     public void sendOperationsForUser(){
         while (true) {

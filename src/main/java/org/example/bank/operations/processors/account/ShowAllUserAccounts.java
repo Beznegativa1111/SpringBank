@@ -10,6 +10,7 @@ public class ShowAllUserAccounts{
 
     private AccountService accountService;
     private Scanner scanner;
+
     @Autowired
     public ShowAllUserAccounts(AccountService accountService){
         this.accountService = accountService;

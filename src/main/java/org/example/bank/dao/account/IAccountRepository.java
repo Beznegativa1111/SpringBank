@@ -7,7 +7,9 @@ import java.util.Map;
 
 public interface IAccountRepository {
     void createAccount(int id);
-    Map<Integer,Account> showAllUserAccounts(int id);
-    Account showAccountsByUserId(int id);
+
+    Map<Integer,Account> showAllUserAccountsByUserId(int  IDCounterOfUser);
+
+
 
 }

@@ -9,13 +9,14 @@ import java.util.Map;
 @Component
 
 public class AccountService implements IAccountService {
+
     private AccountRepository accountRepository;
+
 
     @Autowired
     public AccountService(AccountRepository accountRepository){
         this.accountRepository = accountRepository;
     }
-
 
     @Override
     public void createAccount(int id) {
@@ -24,11 +25,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public Map<Integer, Account> showAllUserAccounts(int id) {
-        return accountRepository.showAllUserAccounts(id);
+        return accountRepository.showAllUserAccountsByUserId(id);
     }
 
-    @Override
-    public Account showAccountsByUserId(int id) {
-        return accountRepository.showAccountsByUserId(id);
-    }
 }
