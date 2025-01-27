@@ -3,10 +3,11 @@ package org.example.bank.services.Account;
 import org.example.bank.dao.account.AccountRepository;
 import org.example.bank.entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
-@Component
+@Service
 
 public class AccountService implements IAccountService {
 

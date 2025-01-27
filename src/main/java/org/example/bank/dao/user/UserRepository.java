@@ -1,19 +1,16 @@
 package org.example.bank.dao.user;
 
-import lombok.Setter;
-import org.example.bank.dao.account.AccountRepository;
 import org.example.bank.entities.Account;
 import org.example.bank.entities.User;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 
-import javax.swing.text.html.parser.Entity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import java.util.Map;
 
 @Component
 public class UserRepository implements IUserRepositoy {
@@ -21,12 +18,10 @@ public class UserRepository implements IUserRepositoy {
     private final Map<Integer, User> userRep;
     private static int IDCounterOfUser;
 
-
     public UserRepository() {
         this.userRep = new HashMap<>();
         IDCounterOfUser = 0;
     }
-
 
 
     public Map<Integer, User> getAllUsers() {

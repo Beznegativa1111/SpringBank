@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 @Component
 public class GetAllUserAccountsByIid  implements CommonProcessOperationsForAccounts{
-
     private AccountService accountService;
     private Scanner scanner;
 

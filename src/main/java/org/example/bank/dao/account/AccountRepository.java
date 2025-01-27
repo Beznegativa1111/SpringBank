@@ -1,15 +1,13 @@
 package org.example.bank.dao.account;
-
 import org.example.bank.dao.user.UserRepository;
 import org.example.bank.entities.Account;
-import org.example.bank.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
+
+
 @Component
 public class AccountRepository implements IAccountRepository{
         private static Map<Integer,Account> accountRepository;
