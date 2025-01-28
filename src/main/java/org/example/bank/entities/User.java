@@ -5,8 +5,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+
 public class User {
     private final int id;
     private final String user_name;
@@ -26,5 +25,21 @@ public class User {
                 ", id=" + id +
                 ", user_name='" + user_name + '\'' +
                 '}';
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUser_name() {
+        return user_name;
     }
 }

@@ -46,4 +46,11 @@ public class UserRepository implements IUserRepositoy {
                     .forEach(f->f.getAccounts().add(accounts));
 
     }
+    public void setMoneyAmountToUserAccount(int idUser,int idAccount,int money){
+        userRep.values().stream().filter(s->s.getId() == idUser)
+                .forEach(f->f.getAccounts().stream().filter(g->
+                        g.getId() == idAccount).forEach(h->
+                        h.setMoneyAmount(money)));
+
+    }
 }

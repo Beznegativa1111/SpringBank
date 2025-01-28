@@ -3,8 +3,7 @@ package org.example.bank.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class Account {
     private final int id;
     private final int userId;
@@ -23,5 +22,21 @@ public class Account {
                 ", userId=" + userId +
                 ", moneyAmount=" + moneyAmount +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getMoneyAmount() {
+        return moneyAmount;
+    }
+
+    public void setMoneyAmount(int moneyAmount) {
+        this.moneyAmount = moneyAmount;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }

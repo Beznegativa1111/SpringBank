@@ -5,4 +5,6 @@ public enum AccountCommands {
 
     SHOW_ALL_USER_ACCOUNTS,
 
+    PUT_MONEY_ON_USER;
+
 }

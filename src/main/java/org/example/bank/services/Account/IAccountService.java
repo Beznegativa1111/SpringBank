@@ -9,4 +9,6 @@ public interface IAccountService {
 
     Map<Integer, Account> showAllUserAccounts(int id);
 
+    void putMoneyIntoUser(int idUser,int idAccount,int sum);
+
 }

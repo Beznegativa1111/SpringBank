@@ -35,17 +35,21 @@ public class AccountRepository implements IAccountRepository{
 
         @Override
         public  Map<Integer,Account> showAllUserAccountsByUserId(int IDCounterOfUser) {
-                Map<Integer,Account> accounts = new HashMap<>();
-                accountRepository.values()
-                        .stream().filter(s->{
-                                if(s.getUserId() == IDCounterOfUser){
-                                       accounts.put(IDCounterOfAccount
-                                       ,s);
-                                }
-                                return false;
-                        });
-
+                Map<Integer, Account> accounts = new HashMap<>();
+                accountRepository.values().stream()
+                        .filter(s->s.getUserId() == IDCounterOfUser)
+                        .forEach(f->accounts.put(f.getId(),f));
                 return accounts;
+        }
+
+        @Override
+        public void putMoneyIntoUser(int idUser,int idAccount,int money) {
+                accountRepository.values()
+                        .stream().filter(s->s.getId() == idAccount)
+                        .forEach(f->f.setMoneyAmount(money));
+                userRepository.setMoneyAmountToUserAccount(idUser,idAccount,money);
+
+
         }
 
 

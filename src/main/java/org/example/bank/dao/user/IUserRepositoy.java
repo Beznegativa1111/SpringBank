@@ -14,4 +14,6 @@ public interface IUserRepositoy {
      void createUser(String user_name);
 
      void addAccountToUser(Account account, int id);
+
+     void setMoneyAmountToUserAccount(int idUser,int idAccount,int money);
 }

@@ -29,4 +29,10 @@ public class AccountService implements IAccountService {
         return accountRepository.showAllUserAccountsByUserId(id);
     }
 
+    @Override
+    public void putMoneyIntoUser(int idUser,int idAccount,int sum) {
+        accountRepository.putMoneyIntoUser(idUser,idAccount, sum);
+    }
+
+
 }
