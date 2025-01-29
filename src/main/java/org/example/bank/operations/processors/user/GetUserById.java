@@ -21,9 +21,14 @@ public class GetUserById implements CommonProccessOperationForUsers {
 
     @Override
     public void proccesOperationForUser() {
-        System.out.println("Enter user_id: ");
-        int id =  scanner.nextInt();
-        System.out.println("User with the entered id: \n " +
-                userService.getUserById(id) );
+        String id;
+        System.out.println("айди должен быть числовым");
+        do {
+            System.out.println("Enter user_id: ");
+            id = scanner.nextLine();
+        } while (id.isEmpty() || !id.matches("\\d+"));
+            System.out.println("User with the entered id: \n " +
+                userService.getUserById(Integer.parseInt(id)));
+
     }
 }

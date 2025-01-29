@@ -1,10 +1,7 @@
 package org.example.bank.dao;
 
 import org.example.bank.operations.commands.AccountCommands;
-import org.example.bank.operations.processors.account.CommonProcessOperationsForAccounts;
-import org.example.bank.operations.processors.account.CreateAccountForUser;
-import org.example.bank.operations.processors.account.ShowAllUserAccounts;
-import org.example.bank.operations.processors.account.PutMoneyIntoUser;
+import org.example.bank.operations.processors.account.*;
 import org.example.bank.services.Account.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,6 +29,9 @@ public class AccountCommandsRepository {
 
         accountsCommands.put(AccountCommands.PUT_MONEY_ON_USER,
                 new PutMoneyIntoUser(accountService));
+
+        accountsCommands.put(AccountCommands.TRANSFER_MONEY_TO_USER_ACCOUNT,
+                new TransferMoneyToUserAccount(accountService));
     }
 
     public void getAccountCommands(AccountCommands accountCommand){

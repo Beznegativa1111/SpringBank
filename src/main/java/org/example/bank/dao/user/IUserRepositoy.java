@@ -16,4 +16,6 @@ public interface IUserRepositoy {
      void addAccountToUser(Account account, int id);
 
      void setMoneyAmountToUserAccount(int idUser,int idAccount,int money);
+
+     void transferMoneyToUserAccount(int idUser, int FromAcc, int ToAcc);
 }

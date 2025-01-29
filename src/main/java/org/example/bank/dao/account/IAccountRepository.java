@@ -9,7 +9,9 @@ public interface IAccountRepository {
 
     Map<Integer,Account> showAllUserAccountsByUserId(int  IDCounterOfUser);
 
-    void putMoneyIntoUser(int idUser , int idAcount, int money);
+    void putMoneyIntoUserAccount(int idUser , int idAcount, int money);
+
+    void transferMoneyToUserAccount(int idUser, int FromAcc, int ToAcc);
 
 
 

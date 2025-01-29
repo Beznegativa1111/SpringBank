@@ -21,10 +21,13 @@ public class CreateUser implements CommonProccessOperationForUsers {
 
     @Override
     public  void proccesOperationForUser() {
-        System.out.println("Enter desired  user_name");
-        String user_name = scanner.nextLine();
+        String user_name;
+        System.out.println("имя не должно состоять лишь из цифр");
+        do {
+            System.out.println("Enter desired  user_name");
+            user_name = scanner.nextLine();
+        } while (user_name.matches("\\d+") || user_name.isEmpty());
         userService.createUser(user_name);
-        System.out.println("Successful creating user");
-
+        System.out.println("успешно");
     }
 }

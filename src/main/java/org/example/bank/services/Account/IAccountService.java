@@ -9,6 +9,8 @@ public interface IAccountService {
 
     Map<Integer, Account> showAllUserAccounts(int id);
 
-    void putMoneyIntoUser(int idUser,int idAccount,int sum);
+    void putMoneyIntoUserAccount(int idUser, int idAccount, int sum);
+
+    void transferMoneyToUserAccount(int idUser, int FromAcc, int ToAcc);
 
 }

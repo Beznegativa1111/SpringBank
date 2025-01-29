@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class AccountService implements IAccountService {
 
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
 
     @Autowired
@@ -21,6 +21,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public void createAccount(int id) {
+
         accountRepository.createAccount(id);
     }
 
@@ -30,8 +31,13 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public void putMoneyIntoUser(int idUser,int idAccount,int sum) {
-        accountRepository.putMoneyIntoUser(idUser,idAccount, sum);
+    public void putMoneyIntoUserAccount(int idUser, int idAccount, int sum) {
+        accountRepository.putMoneyIntoUserAccount(idUser,idAccount, sum);
+    }
+
+    @Override
+    public void transferMoneyToUserAccount(int idUser, int FromAcc, int ToAcc) {
+        accountRepository.transferMoneyToUserAccount(idUser,FromAcc,ToAcc);
     }
 
 

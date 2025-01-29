@@ -20,8 +20,13 @@ public class ShowAllUserAccounts implements CommonProcessOperationsForAccounts{
 
     @Override
     public void processOperationForAccount() {
-        System.out.println("Enter id of User which you want to see accounts");
-        int id = scanner.nextInt();
+        System.out.println("айди юзера должен быть и цифр");
+        int id;
+        do {
+            System.out.println("Enter id of User which you want to see accounts");
+            id = scanner.nextInt();
+        } while (String.valueOf(id).matches("\\d+") || String.valueOf(id).isEmpty());
+
         System.out.println("All Account this user: " +
                 accountService.showAllUserAccounts(id));
 

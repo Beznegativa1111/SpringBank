@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 import java.util.Map;
+import java.util.Optional;
 
 
 @Component
@@ -43,13 +44,30 @@ public class AccountRepository implements IAccountRepository{
         }
 
         @Override
-        public void putMoneyIntoUser(int idUser,int idAccount,int money) {
-                accountRepository.values()
-                        .stream().filter(s->s.getId() == idAccount)
-                        .forEach(f->f.setMoneyAmount(money));
-                userRepository.setMoneyAmountToUserAccount(idUser,idAccount,money);
+        public void putMoneyIntoUserAccount(int idUser, int idAccount, int money) {
+                Optional<Account> account =  accountRepository.values()
+                        .stream().filter(s->
+                                s.getId() == idAccount).findFirst();
+                if(account.isEmpty()){
+                        System.out.println("не найден аккаунт");
+                }else {
+                        account.stream().forEach(s->s.setMoneyAmount(money));
+                        userRepository.setMoneyAmountToUserAccount(idUser,idAccount,money);
+
+                }
 
 
+
+
+        }
+
+        @Override
+        public void transferMoneyToUserAccount(int idUser, int FromAcc, int ToAcc) {
+                Account accountFrom =  accountRepository.get(FromAcc);
+                Account accountTo = accountRepository.get(ToAcc);
+                accountTo.setMoneyAmount(accountTo.getMoneyAmount() +
+                        accountTo.getMoneyAmount());
+                userRepository.transferMoneyToUserAccount(idUser,FromAcc,ToAcc);
         }
 
 

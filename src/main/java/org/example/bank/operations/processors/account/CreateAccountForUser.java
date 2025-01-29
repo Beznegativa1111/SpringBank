@@ -20,9 +20,14 @@ public class CreateAccountForUser implements CommonProcessOperationsForAccounts 
 
     @Override
     public void processOperationForAccount() {
-        System.out.println("Enter id of account which you want to create");
-        int id = scanner.nextInt();
-        accountService.createAccount(id);
+        System.out.println("айди должен быть из цифр");
+        String id;
+        do {
+            System.out.println("Enter id of account which you want to create");
+            id = scanner.nextLine();
+        } while (id.isEmpty() || !id.matches("\\d+"));
+
+        accountService.createAccount(Integer.parseInt(id));
     }
 
 

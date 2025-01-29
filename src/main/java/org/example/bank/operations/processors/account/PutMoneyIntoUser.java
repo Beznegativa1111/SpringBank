@@ -19,12 +19,18 @@ public class PutMoneyIntoUser implements CommonProcessOperationsForAccounts {
 
     @Override
     public void processOperationForAccount() {
-        System.out.println("на какого юзера вы хотели бы положить деньги");
-        int idUser = scanner.nextInt();
-        System.out.println("введите айди аккаунта");
-        int idAccount = scanner.nextInt();
-        System.out.println("введите сумму");
-        int sum = scanner.nextInt();
-        accountService.putMoneyIntoUser(idUser,idAccount ,sum);
+        System.out.println("все должно вводится в виде чисел");
+        int idUser;
+        int idAccount;
+        int sum;
+
+            System.out.println("на какого юзера вы хотели бы положить деньги");
+            idUser = scanner.nextInt();
+            System.out.println("введите айди аккаунта");
+             idAccount = scanner.nextInt();
+            System.out.println("введите сумму");
+             sum = scanner.nextInt();
+
+        accountService.putMoneyIntoUserAccount(idUser, idAccount, sum);
     }
 }
